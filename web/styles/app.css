@@ -1,0 +1,14 @@
+#form {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+#summary {
+  width: 100%;
+}
+#summary h2 {
+  margin-bottom: 18px;
+}
+#summary .hidden {
+  color: var(--text-secondary);
+}

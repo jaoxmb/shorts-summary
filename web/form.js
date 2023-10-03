@@ -22,11 +22,13 @@ form.addEventListener("submit", async (e) => {
   content.textContent = "Fazendo a transcricao do video..."
   const transcription = await server.get("/summary/" + videoID());
 
-  content.textContent = "Fazendo o resumo do video..."
-  const summary = await server.post("/summary", {
-    text: transcription.data.result
-  });
+  content.textContent = transcription.data.result;
 
-  content.textContent = summary.data.result;
+  // content.textContent = "Fazendo o resumo do video..."
+  // const summary = await server.post("/summary", {
+  //   text: transcription.data.result
+  // });
+
+  // content.textContent = summary.data.result;
   content.classList.remove("hidden");
 })

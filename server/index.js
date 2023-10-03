@@ -3,24 +3,34 @@ import express from "express"
 import { download } from "./download.js"
 import { transcribe } from "./transcribe.js"
 import { summarize } from "./summarize.js"
+import { convert } from "./convert.js"
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
 app.get("/summary/:id", async (request, response) => {
-  const id = request.params.id;
-  await download(id);
-  const result = await transcribe();
+  try {
+    const id = request.params.id;
+    await download(id);
+    const audioConverted = await convert();
+    const result = await transcribe(audioConverted);
 
-  response.json({ result });
+    response.json({ result });
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 app.post("/summary", async (request, response) => {
-  const text = request.body.text;
-  const result = await summarize(text);
+  try {
+    const text = request.body.text;
+    const result = await summarize(text);
 
-  response.json({ result });
+    response.json({ result });
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 app.listen(3333, () => {

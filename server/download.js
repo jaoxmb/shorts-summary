@@ -16,12 +16,14 @@ export const download = (videoID) =>
       } else {
         throw new Error("Este video não é um shorts!")
       }
-    }).on("end", () => {
+    })
+    .on("end", () => {
       console.log("Download do video concluido!");
       resolve();
-    }).on("error", (error) => {
+    })
+    .on("error", (error) => {
       console.log(error);
       reject(error);
     })
-      .pipe(fs.createWriteStream("./tmp/audio.mp4"))
+    .pipe(fs.createWriteStream("./tmp/audio.mp4"))
   })

@@ -11,4 +11,5 @@
 }
 #summary .hidden {
   color: var(--text-secondary);
+  user-select: none;
 }

@@ -1,2 +1,4 @@
+import "./form.js"
+
 import "./styles/base.css"
 import "./styles/app.css"

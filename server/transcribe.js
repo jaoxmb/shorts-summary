@@ -1,4 +1,4 @@
-import { Pipeline, pipeline } from "@xenova/transformers";
+import { pipeline } from "@xenova/transformers";
 
 export const transcribe = async (audio) => {
   try {
